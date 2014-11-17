@@ -8,9 +8,20 @@ describe("Setup tests", function(){
 
 describe("Backbone Model tests", function(){
   it("should create a new model object with a 'letter' attribute", function(){
-    var newBoard = new Backbone.Model({
+    var newSquare = new Backbone.Model({
       letter: "Animals"
     });
-    expect(newBoard.get("letter")).toEqual("Animals");
+    expect(newSquare.get("letter")).toEqual("Animals");
+  });
+});
+
+describe("Backbone Collection tests", function(){
+  it("should create a new collection object", function(){
+    // var newSquare = new Backbone.Model({letter: "Animals"});
+    var newBoard = new Backbone.Collection({
+      // model: newSquare,
+      title: "New game board"
+    });
+    expect(newBoard.pluck("title")).toEqual(["New game board"]);
   });
 });

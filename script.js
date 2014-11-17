@@ -7,8 +7,16 @@ var double = function(num){
 var game = {};
 
 // Models
-game.Board = Backbone.Model.extend({
+game.Square = Backbone.Model.extend({
   defaults: {
     letter: ''
   }
 });
+
+// Collections
+game.Board = Backbone.Collection.extend({ // a collection of squares
+  model: game.Square,
+  localStorage: new Store("crossword")
+});
+
+game.board = new game.Board();
