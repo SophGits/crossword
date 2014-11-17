@@ -1,3 +1,17 @@
 body {
   background-color: aliceblue;
 }
+
+label{color: red; display: none;}
+
+.square{
+  position: relative;
+}
+.square .input{
+  font-size: 14;
+  text-transform: uppercase;
+}
+.square .number{
+  position: absolute;
+  font-size: 6px;
+}

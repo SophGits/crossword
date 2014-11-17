@@ -5,3 +5,12 @@ describe("Setup tests", function(){
   });
 
 });
+
+describe("Backbone Model tests", function(){
+  it("should create a new model object with a 'letter' attribute", function(){
+    var newBoard = new Backbone.Model({
+      letter: "Animals"
+    });
+    expect(newBoard.get("letter")).toEqual("Animals");
+  });
+});
