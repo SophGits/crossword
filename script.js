@@ -69,10 +69,13 @@ game.BoardView = Backbone.View.extend({
   },
   addSquare: function(square){
     var view = new game.SquareView({model: square});
-    $('#board').append(view.render().el);
+    var num = square.attributes.position;
+    var location = $('#' + num)
+    $(location).append(view.render().el);
+
   },
   newAttributes: function(){
-    console.log(this);
+    // console.log(this);
     // if(this.input){
     //   return{letter: this.input.val()}
     // } else {
