@@ -12,14 +12,32 @@
     <header id="header">
       <h1>Crossword</h1>
     </header>
-    <section id="board"></section>
+    <section id="board">
+       <div class="position" id="1"  placeholder="C" autofocus></div>
+       <div class="position" id="2"  placeholder="R" ></div>
+       <div class="position" id="3"  placeholder="O" ></div>
+       <div class="position" id="4"  placeholder="S" ></div>
+       <div class="position" id="5"  placeholder="" ></div>
+       <br />
+       <div class="position" id="10"  placeholder="W" ></div>
+       <div class="position" id="11"  placeholder="O" ></div>
+       <div class="position" id="12"  placeholder="R" ></div>
+       <div class="position" id="13"  placeholder="D" ></div>
+       <div class="position" id="14"  placeholder=" " ></div>
+       <br>
+       <div class="position" id="15"  placeholder="X" ></div>
+       <div class="position" id="16"  placeholder="X" ></div>
+       <div class="position" id="17"  placeholder="X" ></div>
+       <br>
+
+    </section>
   </section>
 
   <!-- Templates -->
   <script type="text/template" id="board-template">
       <label>Hello</label>
       <input class="edit" value="<%- letter %>" placeholder="<%- letter %>"></input>
-      <div class="number">9</div>
+      <div class="number">"<%- position %>"</div>
       <div class="remove">X</div>
   </script>
 

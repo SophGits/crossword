@@ -7,6 +7,12 @@ label{color: red; display: none;}
   display: inline-block;
   width: 60px;
 }
+#board .position{
+  background: gold;
+  height: 60px;
+  width: 60px;
+  display: inline-block;
+}
 .square{
   position: relative;
   display: inline-block;
