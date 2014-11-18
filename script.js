@@ -58,11 +58,29 @@ game.BoardView = Backbone.View.extend({
     game.board.fetch();
   },
   events: {
-    'click #board .position': 'createSquare'
+    'click #board .position': 'createSquare',
+    'keyup .position': 'createSquareOnTab'
+  },
+  createSquareOnTab: function(e){
+    var origin = e.currentTarget.id;
+    if (e.which == 38 && origin > 6){
+      var target = parseInt(origin) - 5;
+    } else if (e.which == 39 || e.which == 13 || e.which == 9){
+        var target = parseInt(origin) + 1;
+    } else if (e.which == 40 && origin < 35) {
+       var target = parseInt(origin) + 5;
+    } else if (e.which == 37 && origin > 1) {
+       var target = parseInt(origin) - 1;
+    } else {
+      console.log(this);
+    }
+    var target = $('#' + target);
+    $(target).click();
   },
   createSquare: function(clickedspace){
+    $(this).select();
+      // $(clickedspace).select().focus();
       this.position = clickedspace.target.id;
-
       game.board.create(this);
       // game.board.create(this.newAttributes());
   },
@@ -71,7 +89,6 @@ game.BoardView = Backbone.View.extend({
     var num = square.attributes.position;
     var location = $('#' + num)
     $(location).append(view.render().el);
-
   },
   newAttributes: function(){
     return{
