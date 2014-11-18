@@ -9,14 +9,13 @@ label{color: red; display: none;}
 }
 #board .position{
   background: gold;
-  height: 60px;
-  width: 60px;
+  height: 65px;
+  width: 65px;
   display: inline-block;
 }
 .square{
-  position: relative;
-  display: inline-block;
-  padding: 14px;
+  position: absolute;
+  padding: 10px;
   background: gray;
   border: 1px solid yellow;
 }
