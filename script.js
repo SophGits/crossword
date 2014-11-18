@@ -42,10 +42,7 @@ game.SquareView = Backbone.View.extend({
   update: function(){
     this.input = this.$('.edit');
     var value = this.input.val();
-
-    var position = this.position;
-
-    this.model.save({letter: value, position: position});
+    this.model.save({letter: value});
   },
   destroy: function(){
     this.model.destroy();
@@ -65,7 +62,9 @@ game.BoardView = Backbone.View.extend({
   },
   createSquare: function(clickedspace){
       this.position = clickedspace.target.id;
-      game.board.create(this.newAttributes());
+
+      game.board.create(this);
+      // game.board.create(this.newAttributes());
   },
   addSquare: function(square){
     var view = new game.SquareView({model: square});
@@ -75,15 +74,10 @@ game.BoardView = Backbone.View.extend({
 
   },
   newAttributes: function(){
-    // console.log(this);
-    // if(this.input){
-    //   return{letter: this.input.val()}
-    // } else {
-      return{
-        letter: "^_^",
-        position: this.position
-      }
-    // }
+    return{
+      letter: "X",
+      position: this.position
+    }
   }
 });
 
