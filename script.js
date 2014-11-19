@@ -43,6 +43,8 @@ game.SquareView = Backbone.View.extend({
     this.input = this.$('.edit');
     var value = this.input.val();
     this.model.save({letter: value});
+    console.log("Updated letter: ", this.model.attributes.letter);
+    console.log("Updated position: ", this.model.attributes.position);
   },
   destroy: function(){
     this.model.destroy();
@@ -78,49 +80,30 @@ game.BoardView = Backbone.View.extend({
     $(target).click();
   },
   createSquare: function(clickedspace){
+    this.position = clickedspace.target.id;
 
-        // console.log("hihi: ",this);
-        // console.log(clickedspace);
-        // var selectedObj = clickedspace.target.id;
+    //checking the position numbers of existing models
+    var positions = [];
+    modelsArray = game.board.models;
+    $(modelsArray).each(function(){
+      var position = this.attributes.position;
+      return positions.push(position);
+    });
+    var exists = positions.some(function(el, i, arr){return el == clickedspace.target.id});
 
-        // var target = $('#' + selectedObj + ' .square .edit');
-        // target.select();
-        // console.log(target);
-
-      this.position = clickedspace.target.id;
-
-      //checking the position numbers of existing models
-      var positions = [];
-      modelsArray = game.board.models;
-      $(modelsArray).each(function(){
-        var position = this.attributes.position;
-        return positions.push(position);
-      });
-      console.log(positions);
-      var exists = positions.some(function(el, i, arr){return el == clickedspace.target.id});
-      console.log(exists);
-
-
-      // only create if there isn't one there already
-      if(exists){
-        console.log("there is already something here")
-      } else {
-        console.log("nothing else here");
-        game.board.create(this);
-      }
-      // game.board.create(this.newAttributes());
+    // only create if there isn't one there already
+    if(exists){
+      console.log("there is already something here")
+    } else {
+      console.log("nothing else here");
+      game.board.create(this);
+    }
   },
   addSquare: function(square){
     var view = new game.SquareView({model: square});
     var num = square.attributes.position;
     var location = $('#' + num)
     $(location).append(view.render().el);
-  },
-  newAttributes: function(){
-    return{
-      letter: "X",
-      position: this.position
-    }
   }
 });
 
