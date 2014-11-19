@@ -9,7 +9,7 @@ var game = {};
 // Models
 game.Square = Backbone.Model.extend({
   defaults: {
-    letter: '',
+    letter: '-',
     position: 0
   }
 });
@@ -72,16 +72,42 @@ game.BoardView = Backbone.View.extend({
     } else if (e.which == 37 && origin > 1) {
        var target = parseInt(origin) - 1;
     } else {
-      console.log(this);
+      // console.log("createSquareOnTab: ",this);
     }
     var target = $('#' + target);
     $(target).click();
   },
   createSquare: function(clickedspace){
-    $(this).select();
-      // $(clickedspace).select().focus();
+
+        // console.log("hihi: ",this);
+        // console.log(clickedspace);
+        // var selectedObj = clickedspace.target.id;
+
+        // var target = $('#' + selectedObj + ' .square .edit');
+        // target.select();
+        // console.log(target);
+
       this.position = clickedspace.target.id;
-      game.board.create(this);
+
+      //checking the position numbers of existing models
+      var positions = [];
+      modelsArray = game.board.models;
+      $(modelsArray).each(function(){
+        var position = this.attributes.position;
+        return positions.push(position);
+      });
+      console.log(positions);
+      var exists = positions.some(function(el, i, arr){return el == clickedspace.target.id});
+      console.log(exists);
+
+
+      // only create if there isn't one there already
+      if(exists){
+        console.log("there is already something here")
+      } else {
+        console.log("nothing else here");
+        game.board.create(this);
+      }
       // game.board.create(this.newAttributes());
   },
   addSquare: function(square){
