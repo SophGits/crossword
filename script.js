@@ -4,7 +4,9 @@ var double = function(num){
 }
 
 // Creating board
-var game = {};
+var game = {
+  boardWidth: 5
+};
 
 // Models
 game.Square = Backbone.Model.extend({
@@ -66,21 +68,25 @@ game.BoardView = Backbone.View.extend({
   createSquareOnTab: function(e){
     var origin = e.currentTarget.id;
     if (e.which == 38 && origin > 6){
-      var target = parseInt(origin) - 5;
+      var target = parseInt(origin) - game.boardWidth;
     } else if (e.which == 39 || e.which == 13 || e.which == 9){
         var target = parseInt(origin) + 1;
     } else if (e.which == 40 && origin < 35) {
-       var target = parseInt(origin) + 5;
+       var target = parseInt(origin) + game.boardWidth;
     } else if (e.which == 37 && origin > 1) {
        var target = parseInt(origin) - 1;
     } else {
       // console.log("createSquareOnTab: ",this);
     }
+    console.log("target: " + target);
     var target = $('#' + target);
     $(target).click();
   },
   createSquare: function(clickedspace){
     this.position = clickedspace.target.id;
+
+    // if coming from a direction keypress, select the target box's input
+    $('#' + this.position + " input").select();
 
     //checking the position numbers of existing models
     var positions = [];
