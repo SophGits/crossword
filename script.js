@@ -67,11 +67,13 @@ game.BoardView = Backbone.View.extend({
   },
   createSquareOnTab: function(e){
     var origin = e.currentTarget.id;
+
+    // CHECK the calcs for this:
     if (e.which == 38 && origin > 6){
       var target = parseInt(origin) - game.boardWidth;
     } else if (e.which == 39 || e.which == 13 || e.which == 9){
         var target = parseInt(origin) + 1;
-    } else if (e.which == 40 && origin < 35) {
+    } else if (e.which == 40 && origin < (game.boardWidth * game.boardWidth)-game.boardWidth) {
        var target = parseInt(origin) + game.boardWidth;
     } else if (e.which == 37 && origin > 1) {
        var target = parseInt(origin) - 1;
@@ -98,11 +100,11 @@ game.BoardView = Backbone.View.extend({
     var exists = positions.some(function(el, i, arr){return el == clickedspace.target.id});
 
     // only create if there isn't one there already
-    if(exists){
-      console.log("there is already something here")
-    } else {
+    if(exists === false && this.position > 0 && this.position < game.boardWidth * game.boardWidth){
       console.log("nothing else here");
       game.board.create(this);
+    } else {
+      console.log("there is already something here")
     }
   },
   addSquare: function(square){
