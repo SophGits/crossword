@@ -93,7 +93,7 @@ game.BoardView = Backbone.View.extend({
     var origin = e.currentTarget.id;
 
     // CHECK the calcs for this:
-    if (e.which == 38 && origin > 6){
+    if (e.which == 38 && origin >= 6){
       var target = parseInt(origin) - game.boardWidth;
     } else if (e.which == 39 || e.which == 13 || e.which == 9){
         var target = parseInt(origin) + 1;
@@ -109,7 +109,7 @@ game.BoardView = Backbone.View.extend({
     $(target).click();
   },
   createSquare: function(clickedspace){
-    this.position = clickedspace.target.id;
+    this.position = parseInt(clickedspace.target.id);
 
     // if coming from a direction keypress, select the target box's input
     $('#' + this.position + " input").select();
