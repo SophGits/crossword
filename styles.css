@@ -2,6 +2,12 @@ body {
   background-color: aliceblue;
 }
 
+#board{
+  display: inline-block;
+  float: left;
+  padding: 0 20px;
+}
+
 label{color: red; display: none;}
 #board > .outer-square{
   display: inline-block;
@@ -54,4 +60,14 @@ label{color: red; display: none;}
   color: white;
   background-color: red;
   cursor: pointer;
+}
+
+/* Clue */
+#clues{
+  display: inline-block;
+  float: left;
+  padding: 0 20px;
+  background: #ccc;
+  min-width: 300px;
+  min-height: 200px;
 }

@@ -44,6 +44,10 @@
        <div class="position" id="25"  placeholder="X" ></div>
 
     </section>
+    <section id="clues">
+      <h2>Clues</h2>
+
+    </section>
   </section>
 
   <!-- Templates -->
@@ -53,6 +57,12 @@
       <div class="number">"<%- position %>"</div>
       <div class="remove">X</div>
   </script>
+
+  <script type="text/template" id="clues-template">
+      <input class="edit" value="<%- title %>" placeholder="Clue #1" contenteditable></input>
+      <div class="remove">X</div>
+  </script>
+
 
   <!-- Libraries -->
   <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js" type="text/javascript"></script>
