@@ -86,3 +86,12 @@ label{color: red; display: none;}
   font-size: 18px;
   padding: 10px;
 }
+#clues ul{
+  list-style-type: none;
+}
+#clues input, #clues .remove{
+  display: inline-block;
+}
+.remove{
+  cursor: pointer;
+}
