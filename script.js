@@ -17,16 +17,32 @@ game.Square = Backbone.Model.extend({
   }
 });
 
-// Collections
+game.Clue = Backbone.Model.extend({
+  defaults: {
+    number: 0,
+    text: '',
+    length: 0
+  }
+});
+
+// Collections ////////////////////
+//board
 game.Board = Backbone.Collection.extend({ // a collection of squares
   model: game.Square,
   url: '#', // apparently just so an error isn't thrown later? Delete if you want.
   localStorage: new Store("Crossword")
 });
 game.board = new game.Board(); // initialise collection
+//clues
+game.Clues = Backbone.Collection.extend({
+  model: game.Clue,
+  url: '#'
+  //localStorage: new Store("CrosswordClue") // how do I use the other store?
+})
+game.clues = new game.Clues();
 
-// Views
 
+// Views //////////////////////////
 // Render individual Square view
 game.SquareView = Backbone.View.extend({
   className: 'square',
@@ -65,6 +81,32 @@ game.SquareView = Backbone.View.extend({
   }
 });
 // var view = new game.SquareView({model: game.Square});
+
+// Render individual Clue view
+game.ClueView = Backbone.View.extend({
+  tagName: 'li',
+  template: _.template($('#clues-template').html()),
+  render: function(){
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  },
+  initialize: function(){
+    this.model.on('change', this.render, this);
+    this.model.on('destroy', this.remove, this);
+  },
+  events: {
+    'keyup .edit' : 'update',
+    'click .remove' : 'destroy'
+  },
+  update: function(){
+    this.number = 3;
+    this.text = "hihihi";
+    this.length = 5;
+  },
+  destroy: function(){
+    this.model.destroy();
+  }
+});
 
 // Render whole Board view
 game.BoardView = Backbone.View.extend({
@@ -140,6 +182,26 @@ game.BoardView = Backbone.View.extend({
   }
 });
 
+// Render all clues
+game.CluesView = Backbone.View.extend({
+  el: '#clues',
+  inititalize: function(){
+    game.clues.on('add', this.addClue, this);
+  },
+  events: {
+    'click #add-clue': 'createClue'
+  },
+  createClue: function(clue){
+    console.log(this);
+    // game.clue.create(this);
+    var view = new game.ClueView({model: clue});
+    $('.clues-list').append(view.render().el);
+
+
+  }
+});
+
 // Initialisers
 // Backbone.history.start();
 game.boardView = new game.BoardView();
+game.cluesView = new game.CluesView();
