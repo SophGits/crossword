@@ -71,3 +71,14 @@ label{color: red; display: none;}
   min-width: 300px;
   min-height: 200px;
 }
+#reset{
+  display: inline-block;
+  float: left;
+  color: gold;
+  background: blue;
+  font-size: 24px;
+  margin: 20px;
+  padding: 10px;
+  height: 20px;
+  cursor: pointer;
+}

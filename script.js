@@ -20,7 +20,8 @@ game.Square = Backbone.Model.extend({
 // Collections
 game.Board = Backbone.Collection.extend({ // a collection of squares
   model: game.Square,
-  localStorage: new Store("crossword")
+  url: '#', // apparently just so an error isn't thrown later? Delete if you want.
+  localStorage: new Store("Crossword")
 });
 game.board = new game.Board(); // initialise collection
 
@@ -45,10 +46,13 @@ game.SquareView = Backbone.View.extend({
   update: function(){
     this.input = this.$('.edit');
     var value = this.input.val();
+
     this.model.save({letter: value});
+
+    // checking updated letter & position
     console.log("Updated letter: ", this.model.attributes.letter);
     console.log("Updated position: ", this.model.attributes.position);
-
+    // checking if guess letter matches solution letter
     if(this.model.attributes.letter.toUpperCase() === this.model.attributes.solution.toUpperCase()){
       console.log("Correct. Letter matches solution: " + this.model.attributes.solution);
     } else {
@@ -66,12 +70,24 @@ game.SquareView = Backbone.View.extend({
 game.BoardView = Backbone.View.extend({
   el: '#crosswordapp',
   initialize: function(){
+    // game.board.on('reset', this.fillBoard, this);
     game.board.on('add', this.addSquare, this);
     game.board.fetch();
   },
   events: {
     'click #board .position': 'createSquare',
-    'keyup .position': 'createSquareOnTab'
+    'keyup .position': 'createSquareOnTab',
+    'click #reset': 'fillBoard'
+  },
+  fillBoard: function(){
+    console
+    _.each(game.board.models, this.destroy);
+    var squares = $('.position');
+    for(i=0; i < squares.length; i++){
+      var id = squares[i].id;
+      var target = $('#' + id);
+      $(target).click();
+    }
   },
   createSquareOnTab: function(e){
     var origin = e.currentTarget.id;
@@ -108,9 +124,10 @@ game.BoardView = Backbone.View.extend({
     var exists = positions.some(function(el, i, arr){return el == clickedspace.target.id});
 
     // only create if there isn't one there already
-    if(exists === false && this.position > 0 && this.position < game.boardWidth * game.boardWidth){
+    if(exists === false && this.position > 0 && this.position <= game.boardWidth * game.boardWidth){
       console.log("nothing else here");
       game.board.create(this);
+      // console.log("Position to save: " + this.position);
     } else {
       console.log("there is already something here")
     }
@@ -124,5 +141,5 @@ game.BoardView = Backbone.View.extend({
 });
 
 // Initialisers
-Backbone.history.start();
+// Backbone.history.start();
 game.boardView = new game.BoardView();
