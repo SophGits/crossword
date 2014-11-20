@@ -46,7 +46,7 @@
     </section>
     <section id="clues">
       <h2>Clues</h2>
-      <ul class="clues-list"></ul>
+      <ul id="clues-list"></ul>
       <div id="add-clue">Add</div>
     </section>
     <section id="reset">
@@ -63,9 +63,9 @@
   </script>
 
   <script type="text/template" id="clues-template">
-      <input class="edit" value="<%- number %>" placeholder="Clue #1" contenteditable></input>
-      <input class="edit" value="<%- text %>" placeholder="Common word for a feline" contenteditable></input>
-      <input class="edit" value="<%- length %>" placeholder="(3)" contenteditable></input>
+      <input class="edit" value="<%- cnumber %>" placeholder="Clue #1" contenteditable></input>
+      <input class="edit" value="<%- ctext %>" placeholder="Common word for a feline" contenteditable></input>
+      <input class="edit" value="<%- clength %>" placeholder="(3)" contenteditable></input>
       <div class="remove">X</div>
   </script>
 

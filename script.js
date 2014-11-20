@@ -19,9 +19,9 @@ game.Square = Backbone.Model.extend({
 
 game.Clue = Backbone.Model.extend({
   defaults: {
-    number: 0,
-    text: '',
-    length: 0
+    cnumber: 0,
+    ctext: '',
+    clength: 0
   }
 });
 
@@ -99,9 +99,9 @@ game.ClueView = Backbone.View.extend({
     'click .remove' : 'destroy'
   },
   update: function(){
-    this.number = 3;
-    this.text = "hihihi";
-    this.length = 5;
+    this.cnumber = 3;
+    this.ctext = "hihihi";
+    this.clength = 5;
   },
   destroy: function(){
     this.model.destroy();
@@ -191,13 +191,15 @@ game.CluesView = Backbone.View.extend({
   events: {
     'click #add-clue': 'createClue'
   },
-  createClue: function(clue){
-    console.log(this);
-    // game.clue.create(this);
+  addClue: function(clue) {
     var view = new game.ClueView({model: clue});
-    $('.clues-list').append(view.render().el);
+    $('#clues-list').append(view.render().el);
 
-
+  },
+  createClue: function(){
+    console.log(this);
+    var model = game.clues.create({cnumber: 1, ctext: "test text", clength: 4});
+    this.addClue(model);
   }
 });
 
