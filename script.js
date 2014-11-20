@@ -12,6 +12,7 @@ var game = {
 game.Square = Backbone.Model.extend({
   defaults: {
     letter: '-',
+    solution: 'L',
     position: 0
   }
 });
@@ -47,6 +48,13 @@ game.SquareView = Backbone.View.extend({
     this.model.save({letter: value});
     console.log("Updated letter: ", this.model.attributes.letter);
     console.log("Updated position: ", this.model.attributes.position);
+
+    if(this.model.attributes.letter.toUpperCase() === this.model.attributes.solution.toUpperCase()){
+      console.log("Correct. Letter matches solution: " + this.model.attributes.solution);
+    } else {
+      console.log("Not correct letter. This is letter " + this.model.attributes.letter);
+    }
+
   },
   destroy: function(){
     this.model.destroy();
