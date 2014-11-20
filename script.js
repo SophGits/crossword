@@ -97,7 +97,7 @@ game.BoardView = Backbone.View.extend({
       var target = parseInt(origin) - game.boardWidth;
     } else if (e.which == 39 || e.which == 13 || e.which == 9){
         var target = parseInt(origin) + 1;
-    } else if (e.which == 40 && origin < (game.boardWidth * game.boardWidth)-game.boardWidth) {
+    } else if (e.which == 40 && origin <= (game.boardWidth * game.boardWidth)-game.boardWidth) {
        var target = parseInt(origin) + game.boardWidth;
     } else if (e.which == 37 && origin > 1) {
        var target = parseInt(origin) - 1;

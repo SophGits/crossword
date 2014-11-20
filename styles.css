@@ -74,11 +74,14 @@ label{color: red; display: none;}
 #reset{
   display: inline-block;
   float: left;
-  color: gold;
   background: blue;
-  font-size: 24px;
-  margin: 20px;
-  padding: 10px;
-  height: 20px;
+  /*height: 20px;*/
+}
+#reset button{
   cursor: pointer;
+  display: inline-block;
+  background-color: gold;
+  margin: 20px;
+  font-size: 18px;
+  padding: 10px;
 }
