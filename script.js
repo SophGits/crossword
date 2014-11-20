@@ -11,7 +11,7 @@ var game = {
 // Models
 game.Square = Backbone.Model.extend({
   defaults: {
-    letter: '-',
+    letter: '',
     solution: 'L',
     position: 0
   }
@@ -80,11 +80,11 @@ game.BoardView = Backbone.View.extend({
     'click #reset': 'fillBoard'
   },
   fillBoard: function(){
-    console
-    _.each(game.board.models, this.destroy);
+    //_.each(game.board.models, this.destroy); // this doesn't work
     var squares = $('.position');
     for(i=0; i < squares.length; i++){
       var id = squares[i].id;
+      $("#" + id + " .square .remove").click();
       var target = $('#' + id);
       $(target).click();
     }
