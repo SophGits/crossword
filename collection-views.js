@@ -12,8 +12,8 @@ game.BoardView = Backbone.View.extend({
     'click #board .position': 'createSquare',
     'keyup .position': 'createSquareOnTab',
     'click #reset': 'fillBoard',
-    'click #check'   : 'checkAnswers'
-    // 'click #save': 'saveBoard'
+    'click #check'   : 'checkAnswers',
+    'click #save': 'saveBoard'
   },
   fillBoard: function(){
     //_.each(game.board.models, this.destroy); // this doesn't work
@@ -81,11 +81,15 @@ game.BoardView = Backbone.View.extend({
       var target = $('#' + id + " .square .edit");
       $(target).keyup();
     }
+  },
+  saveBoard: function(){
+    console.log(this);
+    var models = game.board.models;
+    console.log(models);
+    $(models).each(function(){
+      this.attributes.solution = this.attributes.letter;
+    })
   }
-  // saveBoard: function(){
-  //   console.log(this);
-  //   this.model.saveyo();
-  // }
 });
 
 // Render all clues
