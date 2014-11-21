@@ -72,17 +72,17 @@ label{color: red; display: none;}
   min-width: 300px;
   min-height: 200px;
 }
-#reset{
+#reset, #save, #check{
   display: inline-block;
   float: left;
   background: blue;
-  /*height: 20px;*/
+  margin: 1px;
 }
-#reset button{
+#reset button, #save button, #check button{
   cursor: pointer;
   display: inline-block;
   background-color: gold;
-  margin: 20px;
+  margin: 10px;
   font-size: 18px;
   padding: 10px;
 }
