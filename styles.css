@@ -88,12 +88,22 @@ label{color: red; display: none;}
 }
 #clues ul{
   list-style-type: none;
+  padding-left: 0;
 }
 #clues input, #clues .remove{
   display: inline-block;
 }
+#add-clue{
+  float: right;
+  cursor: pointer;
+}
+
 .remove{
   cursor: pointer;
+  color: red;
+  padding: 0 4px 0 5px;
+  border-radius: 5px;
+  font-weight: bold;
 }
 
 /*Sundry*/

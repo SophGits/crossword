@@ -14,6 +14,7 @@ game.SquareView = Backbone.View.extend({
   },
   events: {
     'keyup .edit' : 'update',
+    'dblclick .edit' : 'checkAnswer',
     'click .remove' : 'destroy'
   },
   update: function(){
@@ -21,7 +22,7 @@ game.SquareView = Backbone.View.extend({
     var value = this.input.val();
 
     this.model.save({letter: value});
-    this.checkAnswer(this);
+    // this.checkAnswer(this);
   },
   checkAnswer: function(){
     // checking updated letter & position
@@ -45,30 +46,30 @@ game.SquareView = Backbone.View.extend({
 // var view = new game.SquareView({model: game.Square});
 
 // Render individual Clue view
-// game.ClueView = Backbone.View.extend({
-//   tagName: 'li',
-//   template: _.template($('#clues-template').html()),
-//   render: function(){
-//     this.$el.html(this.template(this.model.toJSON()));
-//     return this;
-//   },
-//   initialize: function(){
-//     this.model.on('change', this.render, this);
-//     this.model.on('destroy', this.remove, this);
-//   },
-//   events: {
-//     'keyup .edit' : 'update',
-//     'click .remove' : 'destroy'
-//   },
-//   update: function(){
-//     this.cnumber = 3;
-//     this.ctext = "hihihi";
-//     this.clength = 5;
+game.ClueView = Backbone.View.extend({
+  tagName: 'li',
+  template: _.template($('#clues-template').html()),
+  render: function(){
+    this.$el.html(this.template(this.model.toJSON()));
+    return this;
+  },
+  initialize: function(){
+    this.model.on('change', this.render, this);
+    this.model.on('destroy', this.remove, this);
+  },
+  events: {
+    'keyup .edit' : 'update',
+    'click .remove' : 'destroy'
+  },
+  update: function(){
+    this.cnumber = 3;
+    this.ctext = "hihihi";
+    this.clength = 5;
 
-//     console.log("update clue view: " );
-//     console.log(this);
-//   },
-//   destroy: function(){
-//     this.model.destroy();
-//   }
-// });
+    console.log("update clue view: " );
+    console.log(this);
+  },
+  destroy: function(){
+    this.model.destroy();
+  }
+});

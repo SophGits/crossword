@@ -80,7 +80,7 @@ game.BoardView = Backbone.View.extend({
     for(i=0; i < squares.length; i++){
       var id = squares[i].id;
       var target = $('#' + id + " .square .edit");
-      $(target).keyup();
+      $(target).dblclick();
     }
   },
   saveBoard: function(){
@@ -94,27 +94,27 @@ game.BoardView = Backbone.View.extend({
 });
 
 // Render all clues
-// game.CluesView = Backbone.View.extend({
-//   el: '#clues',
-//   inititalize: function(){
-//     game.clues.on('add', this.addClue, this);
-//   },
-//   events: {
-//     'click #add-clue': 'createClue'
-//   },
-//   addClue: function(clue) {
-//     var view = new game.ClueView({model: clue});
-//     $('#clues-list').append(view.render().el);
+game.CluesView = Backbone.View.extend({
+  el: '#clues',
+  inititalize: function(){
+    game.clues.on('add', this.addClue, this);
+  },
+  events: {
+    'click #add-clue': 'createClue'
+  },
+  addClue: function(clue) {
+    var view = new game.ClueView({model: clue});
+    $('#clues-list').append(view.render().el);
 
-//   },
-//   createClue: function(){
-//     console.log(this);
-//     var model = game.board.create({cnumber: 1, ctext: "test text", clength: 4});
-//     this.addClue(model);
-//   }
-// });
+  },
+  createClue: function(){
+    console.log(this);
+    var model = game.board.create({cnumber: 1, ctext: "test text", clength: 4});
+    this.addClue(model);
+  }
+});
 
 // Initialisers
 // Backbone.history.start();
 game.boardView = new game.BoardView();
-// game.cluesView = new game.CluesView();
+game.cluesView = new game.CluesView();
