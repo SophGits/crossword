@@ -35,6 +35,7 @@ game.SquareView = Backbone.View.extend({
       console.log(this);
     } else {
       console.log("Not correct letter. This is letter " + this.model.attributes.letter);
+      $(this.el).removeClass('highlight');
     }
   },
   destroy: function(){

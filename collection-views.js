@@ -17,10 +17,11 @@ game.BoardView = Backbone.View.extend({
   },
   fillBoard: function(){
     //_.each(game.board.models, this.destroy); // this doesn't work
-    game.board.reset();
+    //game.board.reset(); // does not remove all views
     var squares = $('.position');
     for(i=0; i < squares.length; i++){
       var id = squares[i].id;
+      $("#" + id + " .square .remove").click();
       var target = $('#' + id);
       $(target).click();
     }
