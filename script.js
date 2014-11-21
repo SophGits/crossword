@@ -23,6 +23,12 @@ game.SquareView = Backbone.View.extend({
 
     this.model.save({letter: value});
     // this.checkAnswer(this);
+
+  if(this.model.attributes.letter.toUpperCase() === this.model.attributes.solution.toUpperCase() && this.model.attributes.letter !== ""){
+      // if checkAnswer highlight is still on, leave it on.
+    } else {
+          $(this.el).removeClass('highlight');
+    }
   },
   checkAnswer: function(){
     // checking updated letter & position
