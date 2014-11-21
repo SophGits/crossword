@@ -95,3 +95,6 @@ label{color: red; display: none;}
 .remove{
   cursor: pointer;
 }
+
+/*Sundry*/
+.highlight{background-color: lawngreen; border: 2px solid green;}

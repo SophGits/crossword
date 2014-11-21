@@ -30,6 +30,9 @@ game.SquareView = Backbone.View.extend({
     // checking if guess letter matches solution letter
     if(this.model.attributes.letter.toUpperCase() === this.model.attributes.solution.toUpperCase()){
       console.log("Correct. Letter matches solution: " + this.model.attributes.solution);
+      $(this.el).addClass('highlight');
+      console.log("to highlight");
+      console.log(this);
     } else {
       console.log("Not correct letter. This is letter " + this.model.attributes.letter);
     }
