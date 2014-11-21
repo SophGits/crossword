@@ -100,17 +100,26 @@ game.CluesView = Backbone.View.extend({
     game.clues.on('add', this.addClue, this);
   },
   events: {
-    'click #add-clue': 'createClue'
+    'click #add-clue-across': 'createClueAcross',
+    'click #add-clue-down': 'createClueDown'
   },
-  addClue: function(clue) {
+  addClueAcross: function(clue) {
     var view = new game.ClueView({model: clue});
-    $('#clues-list').append(view.render().el);
-
+    $('#clues-list-across').append(view.render().el);
   },
-  createClue: function(){
+  addClueDown: function(clue) {
+    var view = new game.ClueView({model: clue});
+    $('#clues-list-down').append(view.render().el);
+  },
+  createClueAcross: function(){
     console.log(this);
     var model = game.board.create({cnumber: 1, ctext: "test text", clength: 4});
-    this.addClue(model);
+    this.addClueAcross(model);
+  },
+  createClueDown: function(){
+    console.log(this);
+    var model = game.board.create({cnumber: 1, ctext: "test text", clength: 4});
+    this.addClueDown(model);
   }
 });
 

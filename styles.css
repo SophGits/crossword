@@ -63,21 +63,7 @@ label{color: red; display: none;}
   cursor: pointer;
 }
 
-/* Clue */
-#clues{
-  display: inline-block;
-  float: left;
-  padding: 0 20px;
-  background: #ccc;
-  min-width: 300px;
-  min-height: 200px;
-}
-#reset, #save, #check{
-  display: inline-block;
-  float: left;
-  background: blue;
-  margin: 1px;
-}
+/* Reset, save, check */
 #reset button, #save button, #check button{
   cursor: pointer;
   display: inline-block;
@@ -86,9 +72,31 @@ label{color: red; display: none;}
   font-size: 18px;
   padding: 10px;
 }
+#reset, #save, #check{
+  display: inline-block;
+  float: left;
+  background: blue;
+  margin: 1px;
+}
+
+/* Clue */
+#clues{
+  display: inline-block;
+  float: left;
+  padding: 0 20px 20px 20px;
+  background: #ccc;
+  min-width: 300px;
+  min-height: 200px;
+}
+#clues h3{
+  font-size: 16px;
+  background: lightgray;
+  margin-bottom: 0;
+}
 #clues ul{
   list-style-type: none;
   padding-left: 0;
+  margin: 1px 0;
 }
 #clues input, #clues .remove{
   display: inline-block;
