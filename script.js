@@ -24,11 +24,17 @@ game.SquareView = Backbone.View.extend({
     this.model.save({letter: value});
     // this.checkAnswer(this);
 
-  if(this.model.attributes.letter.toUpperCase() === this.model.attributes.solution.toUpperCase() && this.model.attributes.letter !== ""){
-      // if checkAnswer highlight is still on, leave it on.
+    if(this.model.attributes.letter.toUpperCase() === this.model.attributes.solution.toUpperCase() && this.model.attributes.letter !== ""){
+        // if checkAnswer highlight is still on, leave it on.
     } else {
-          $(this.el).removeClass('highlight');
+      $(this.el).removeClass('highlight');
     }
+  },
+  clearBoard: function(){
+    setTimeout(function(){
+      console.log(this);
+        // this.$('.edit').val('').fade();
+    }, 1500);
   },
   checkAnswer: function(){
     // checking updated letter & position

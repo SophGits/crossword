@@ -47,36 +47,44 @@
     <section id="clues">
       <h2>Clues</h2>
       <h3>Across</h3>
-      <ul id="clues-list-across"></ul>
+      <ul id="clues-list-across" class="add-clue"></ul>
       <button id="add-clue-across">+ Add</button>
       <h3>Down</h3>
-      <ul id="clues-list-down"></ul>
+      <ul id="clues-list-down" class="add-clue"></ul>
       <button id="add-clue-down">+ Add</button>
-
     </section>
+
     <section id="reset">
       <button>New game</button>
     </section>
+
     <section id="save">
       <button>Save board</button>
     </section>
+
     <section id="check">
       <button>Check answers</button>
     </section>
+
   </section>
 
   <!-- Templates -->
   <script type="text/template" id="board-template">
       <label>Hello</label>
-      <input class="edit" value="<%- letter %>" placeholder="<%- letter %>" contenteditable></input>
+      <input class="edit" value="<%- letter %>" placeholder="" contenteditable></input>
       <div class="number"><%- position %></div>
       <div class="remove">X</div>
   </script>
 
   <script type="text/template" id="clues-template">
-      <input id="cnumber" class="edit" value="<%- cnumber %>" placeholder="Clue #1" contenteditable></input>
-      <input id="ctext" class="edit" value="<%- ctext %>" placeholder="Common word for a feline" contenteditable></input>
-      <input id="clength" class="edit" value="<%- clength %>" placeholder="(3)" contenteditable></input>
+      <label class="cnumber"><%- cnumber %></label>
+      <input class="cnumber" class="editing" value="<%- cnumber %>" placeholder="Clue #1" contenteditable></input>
+
+      <label class="ctext"><%- ctext %></label>
+      <input class="ctext" class="editing" value="<%- ctext %>" placeholder="Common word for a feline" contenteditable></input>
+
+      <label class="clength"><%- clength %></label>
+      <input class="clength" class="editing" value="<%- clength %>" placeholder="(3)" contenteditable></input>
       <div class="remove">X</div>
   </script>
 

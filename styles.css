@@ -88,6 +88,15 @@ label{color: red; display: none;}
   min-width: 300px;
   min-height: 200px;
 }
+
+#clues-template input,
+#clues-template .editing label{
+  display: none;
+}
+#clues-template label{
+  display: inline-block;
+}
+
 #clues h3{
   font-size: 16px;
   background: lightgray;
@@ -106,13 +115,13 @@ label{color: red; display: none;}
   cursor: pointer;
 }
 /* Input boxes */
-#clues ul #cnumber{
+#clues ul .cnumber{
   width: 30px;
 }
-#clues ul #ctext{
+#clues ul .ctext{
   width: 210px;
 }
-#clues ul #clength{
+#clues ul .clength{
   width: 30px;
 }
 

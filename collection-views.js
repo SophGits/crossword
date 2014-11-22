@@ -26,6 +26,15 @@ game.BoardView = Backbone.View.extend({
       $(target).click();
     }
   },
+  clearBoard: function(){
+    setTimeout(function(){
+      var squares = $('.position');
+      for(i=0; i < squares.length; i++){
+        var id = squares[i].id;
+        var input = $("#" + id + " .square .edit").val('');
+      }
+    }, 1500);
+  },
   createSquareOnTab: function(e){
     var origin = e.currentTarget.id;
 
@@ -86,10 +95,12 @@ game.BoardView = Backbone.View.extend({
   saveBoard: function(){
     console.log(this);
     var models = game.board.models;
-    console.log(models);
+    // console.log("models: ");
+    // console.log(models);
     $(models).each(function(){
       this.attributes.solution = this.attributes.letter;
-    })
+    });
+    this.clearBoard();
   }
 });
 
