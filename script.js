@@ -30,12 +30,6 @@ game.SquareView = Backbone.View.extend({
       $(this.el).removeClass('highlight');
     }
   },
-  clearBoard: function(){
-    setTimeout(function(){
-      console.log(this);
-        // this.$('.edit').val('').fade();
-    }, 1500);
-  },
   checkAnswer: function(){
     // checking updated letter & position
     console.log("Updated letter: ", this.model.attributes.letter);

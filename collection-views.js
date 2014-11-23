@@ -95,12 +95,11 @@ game.BoardView = Backbone.View.extend({
   saveBoard: function(){
     console.log(this);
     var models = game.board.models;
-    // console.log("models: ");
-    // console.log(models);
     $(models).each(function(){
       this.attributes.solution = this.attributes.letter;
     });
     this.clearBoard();
+    game.cluesView.saveClues();
   }
 });
 
@@ -131,6 +130,9 @@ game.CluesView = Backbone.View.extend({
     console.log(this);
     var model = game.board.create({cnumber: 1, ctext: "test text", clength: 4});
     this.addClueDown(model);
+  },
+  saveClues: function(){
+    console.log("\nSave the clues now\n");
   }
 });
 
