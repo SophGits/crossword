@@ -64,17 +64,18 @@ game.ClueView = Backbone.View.extend({
     this.model.on('destroy', this.remove, this);
   },
   events: {
-    'keyup .edit' : 'update',
+    'keyup .add-clue li input' : 'update',
     'click .remove' : 'destroy'
   },
   update: function(){
-    this.cnumber = 3;
-    this.ctext = "hihihi";
-    this.clength = 5;
-
-    console.log("update clue view: " );
-    console.log(this);
+    this.cnumber = this.$('.cnumber')[1].value;
+    this.ctext = this.$('.ctext')[1].value;
+    this.clength = this.$('.clength')[1].value;
+    this.model.save({cnumber: this.cnumber, ctext: this.ctext, clength: this.clength});
   },
+  // save: function(){
+  //   console.log('saving...');
+  // },
   destroy: function(){
     this.model.destroy();
   }

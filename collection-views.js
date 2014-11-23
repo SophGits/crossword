@@ -50,7 +50,7 @@ game.BoardView = Backbone.View.extend({
     } else {
       // console.log("createSquareOnTab: ",this);
     }
-    console.log("target: " + target);
+    // console.log("target: " + target);
     var target = $('#' + target);
     $(target).click();
   },
@@ -71,11 +71,11 @@ game.BoardView = Backbone.View.extend({
 
     // only create if there isn't one there already
     if(exists === false && this.position > 0 && this.position <= game.boardWidth * game.boardWidth){
-      console.log("nothing else here");
+      // console.log("nothing else here");
       game.board.create(this);
       // console.log("Position to save: " + this.position);
     } else {
-      console.log("there is already something here")
+      // console.log("there is already something here")
     }
   },
   addSquare: function(square){
@@ -93,13 +93,15 @@ game.BoardView = Backbone.View.extend({
     }
   },
   saveBoard: function(){
-    console.log(this);
+    // console.log(this);
     var models = game.board.models;
     $(models).each(function(){
       this.attributes.solution = this.attributes.letter;
+      console.log('models: ');
+      console.log(this);
     });
     this.clearBoard();
-    game.cluesView.saveClues();
+    // game.cluesView.saveClues();
   }
 });
 
@@ -122,18 +124,24 @@ game.CluesView = Backbone.View.extend({
     $('#clues-list-down').append(view.render().el);
   },
   createClueAcross: function(){
-    console.log(this);
+    // console.log(this);
     var model = game.board.create({cnumber: 1, ctext: "test text", clength: 4});
     this.addClueAcross(model);
   },
   createClueDown: function(){
-    console.log(this);
+    // console.log(this);
     var model = game.board.create({cnumber: 1, ctext: "test text", clength: 4});
     this.addClueDown(model);
-  },
-  saveClues: function(){
-    console.log("\nSave the clues now\n");
   }
+  // saveClues: function(){
+  //   console.log("\nSave the clues now\n");
+  //   var cluesList = $(this.el).find('ul li');
+  //   for(var i =0; i <= cluesList.length; i++){
+  //     var clue = cluesList[i];
+  //     console.log(clue);
+  //     game.clue.save(clue);
+  //   }
+  // }
 });
 
 // Initialisers
