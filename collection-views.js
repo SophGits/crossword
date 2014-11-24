@@ -25,6 +25,11 @@ game.BoardView = Backbone.View.extend({
       var target = $('#' + id);
       $(target).click();
     }
+    var cluesList = $(this.el).find('ul li');
+    for(var i =0; i <= cluesList.length; i++){
+      var clue = cluesList[i];
+      $(clue).closest($('.remove').click());
+    }
   },
   clearBoard: function(){
     setTimeout(function(){
