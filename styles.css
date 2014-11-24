@@ -6,6 +6,9 @@ body {
 *, *:before, *:after {
   box-sizing: inherit;
 }
+*:focus {
+    outline: 0;
+}
 
 #board{
   display: inline-block;
@@ -131,9 +134,26 @@ body {
 #clues input, #clues .remove{
   display: inline-block;
 }
-#add-clue{
-  float: right;
+#clues .remove{
+  border: 2px solid red;
+  border-radius: 20px;
+}
+#clues .remove:hover{
+  border: 2px solid gray;
+  border-radius: 20px;
+  background: red;
+  color: black;
+}
+#add-clue-across, #add-clue-down{
   cursor: pointer;
+  display: block;
+  margin: 2px auto;
+  width: 99%;
+  height: 28px;
+  background: royalblue;
+  border-radius: 12px;
+  font-size: 16px;
+  color: yellow;
 }
 /* Input boxes */
 #clues ul .cnumber{width: 30px;}

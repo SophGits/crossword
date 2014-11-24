@@ -18,6 +18,7 @@ game.BoardView = Backbone.View.extend({
   fillBoard: function(){
     //_.each(game.board.models, this.destroy); // this doesn't work
     //game.board.reset(); // does not remove all views
+   this.removeClues();
     var squares = $('.position');
     for(i=0; i < squares.length; i++){
       var id = squares[i].id;
@@ -25,6 +26,8 @@ game.BoardView = Backbone.View.extend({
       var target = $('#' + id);
       $(target).click();
     }
+  },
+  removeClues: function(){
     var cluesList = $(this.el).find('ul li');
     for(var i =0; i <= cluesList.length; i++){
       var clue = cluesList[i];
