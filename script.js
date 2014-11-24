@@ -54,6 +54,7 @@ game.SquareView = Backbone.View.extend({
 // Render individual Clue view
 game.ClueView = Backbone.View.extend({
   tagName: 'li',
+  className: 'editing',
   template: _.template($('#clues-template').html()),
   render: function(){
     this.$el.html(this.template(this.model.toJSON()));
@@ -67,15 +68,24 @@ game.ClueView = Backbone.View.extend({
     'keyup .add-clue li input' : 'update',
     'click .remove' : 'destroy'
   },
-  update: function(){
-    this.cnumber = this.$('.cnumber')[1].value;
-    this.ctext = this.$('.ctext')[1].value;
-    this.clength = this.$('.clength')[1].value;
-    this.model.save({cnumber: this.cnumber, ctext: this.ctext, clength: this.clength});
+  update: function(e){
+    if(e.which === 13){
+      this.cnumber = this.$('.cnumber')[1].value;
+      this.ctext = this.$('.ctext')[1].value;
+      this.clength = this.$('.clength')[1].value;
+      this.model.save({cnumber: this.cnumber, ctext: this.ctext, clength: this.clength});
+      console.log("Clue updated");
+      this.save();
+    }
+    else{
+      //nothing
+    }
   },
-  // save: function(){
-  //   console.log('saving...');
-  // },
+  save: function(){
+    console.log('saving...');
+    console.log(this);
+    this.$el.removeClass('editing');
+  },
   destroy: function(){
     this.model.destroy();
   }

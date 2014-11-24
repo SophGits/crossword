@@ -8,7 +8,8 @@ body {
   padding: 0 20px;
 }
 
-label{color: red; display: none;}
+#board label{color: red; display: none;}
+
 #board > .outer-square{
   display: inline-block;
   width: 60px;
@@ -89,13 +90,16 @@ label{color: red; display: none;}
   min-height: 200px;
 }
 
-#clues-template input,
-#clues-template .editing label{
+#clues .add-clue li input,
+#clues .add-clue li.editing label{
   display: none;
 }
-#clues-template label{
+#clues .add-clue li.editing input,
+#clues .add-clue  label{
   display: inline-block;
 }
+
+#clues label{background-color: blue; color: white; padding: 5px 5px 5px 10px; border-radius: 5px;}
 
 #clues h3{
   font-size: 16px;
