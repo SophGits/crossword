@@ -70,7 +70,7 @@ game.ClueView = Backbone.View.extend({
     'click .remove' : 'destroy'
   },
   update: function(e){
-    if(e.which === 13){
+    if(e.which === 13 || e==="blog"){
       this.cnumber = this.$('.cnumber')[1].value;
       this.ctext = this.$('.ctext')[1].value;
       this.clength = this.$('.clength')[1].value;
@@ -79,6 +79,7 @@ game.ClueView = Backbone.View.extend({
       this.save();
     } else if (e.type === "dblclick"){
       console.log(this);
+      this.$el.removeClass("editing");
       this.$el.addClass("editing");
     } else{
       //nothing
