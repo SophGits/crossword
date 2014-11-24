@@ -1,5 +1,10 @@
 body {
   background-color: aliceblue;
+  box-sizing: border-box;
+}
+/* The below prevents having to use different widths and padding on labels and text in the clue input boxes*/
+*, *:before, *:after {
+  box-sizing: inherit;
 }
 
 #board{
@@ -32,6 +37,7 @@ body {
   width: 54px;
   height: 49px;
   padding: 0 0 0 20px;
+  background-color: lightyellow;
 }
 .square .number{
   position: absolute;
@@ -99,7 +105,18 @@ body {
   display: inline-block;
 }
 
-#clues label{background-color: blue; color: white; padding: 5px 5px 5px 10px; border-radius: 5px;}
+.cnumber{padding: 5px; }
+.ctext {padding: 5px 5px 5px 10px;}
+.clength {padding: 5px 2px}
+#clues input{background-color: lightyellow; color: navy; border-radius: 5px;}
+#clues label{
+    color: white;
+    border-radius: 5px;
+    background: -webkit-linear-gradient(blue, navy); /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(blue, navy); /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(blue, navy); /* For Firefox 3.6 to 15 */
+    background: linear-gradient(blue, navy); /* Standard syntax (must be last) */
+}
 
 #clues h3{
   font-size: 16px;
@@ -119,21 +136,14 @@ body {
   cursor: pointer;
 }
 /* Input boxes */
-#clues ul .cnumber{
-  width: 30px;
-}
-#clues ul .ctext{
-  width: 210px;
-}
-#clues ul .clength{
-  width: 30px;
-}
-#clues ul .clength:before{
-  content: "(";
-}
-#clues ul .clength:after{
-  content: ")"
-}
+#clues ul .cnumber{width: 30px;}
+#clues ul label.cnumber{width: 30px;}
+#clues ul .ctext{width: 210px;}
+#clues ul label.ctext{width: 210px;}
+#clues ul .clength{width: 30px;}
+#clues ul label.clength{width: 30px;}
+#clues ul .clength:before{content: "(";}
+#clues ul .clength:after{content: ")"}
 .remove{
   cursor: pointer;
   color: red;
