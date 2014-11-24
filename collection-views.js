@@ -101,7 +101,7 @@ game.BoardView = Backbone.View.extend({
       console.log(this);
     });
     this.clearBoard();
-    // game.cluesView.saveClues();
+    game.cluesView.saveClues();
   }
 });
 
@@ -132,16 +132,26 @@ game.CluesView = Backbone.View.extend({
     // console.log(this);
     var model = game.board.create({cnumber: 1, ctext: "test text", clength: 4});
     this.addClueDown(model);
+  },
+  saveClues: function(){
+    console.log("\nSave the clues now\n");
+    // game.board.each(this.clueView.update(e.which === 13));
+    $.each(game.board.models, function(i, val){
+      // console.log("val: ", val, "i: ", i);
+      // var id = this.id;
+      // var clue = this.collection.get(id);
+      // console.log(clue);
+      console.log(this);
+      // game.clueView = this;
+      // game.clueView.update();
+    });
+    // var cluesList = $(this.el).find('ul li');
+    // for(var i =0; i <= cluesList.length; i++){
+    //   var clue = cluesList[i];
+    //   console.log(clue);
+    //   game.clue.save(clue);
+    // }
   }
-  // saveClues: function(){
-  //   console.log("\nSave the clues now\n");
-  //   var cluesList = $(this.el).find('ul li');
-  //   for(var i =0; i <= cluesList.length; i++){
-  //     var clue = cluesList[i];
-  //     console.log(clue);
-  //     game.clue.save(clue);
-  //   }
-  // }
 });
 
 // Initialisers

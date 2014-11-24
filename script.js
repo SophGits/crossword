@@ -66,6 +66,7 @@ game.ClueView = Backbone.View.extend({
   },
   events: {
     'keyup .add-clue li input' : 'update',
+    'dblclick .add-clue label': 'update',
     'click .remove' : 'destroy'
   },
   update: function(e){
@@ -76,8 +77,10 @@ game.ClueView = Backbone.View.extend({
       this.model.save({cnumber: this.cnumber, ctext: this.ctext, clength: this.clength});
       console.log("Clue updated");
       this.save();
-    }
-    else{
+    } else if (e.type === "dblclick"){
+      console.log(this);
+      this.$el.addClass("editing");
+    } else{
       //nothing
     }
   },

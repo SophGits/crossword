@@ -128,7 +128,12 @@ body {
 #clues ul .clength{
   width: 30px;
 }
-
+#clues ul .clength:before{
+  content: "(";
+}
+#clues ul .clength:after{
+  content: ")"
+}
 .remove{
   cursor: pointer;
   color: red;
