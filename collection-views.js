@@ -94,7 +94,7 @@ game.BoardView = Backbone.View.extend({
   },
   checkAnswers: function(){
     var squares = $('.position');
-    for(i=0; i < squares.length; i++){
+    for(i=0; i <= squares.length; i++){
       var id = squares[i].id;
       var target = $('#' + id + " .square .edit");
       $(target).dblclick();
@@ -110,6 +110,7 @@ game.BoardView = Backbone.View.extend({
     });
     this.clearBoard();
     game.cluesView.saveClues();
+    // DO NOT SAVE CLUES WHICH HAVE NO TEXT
   }
 });
 

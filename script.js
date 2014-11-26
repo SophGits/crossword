@@ -29,6 +29,7 @@ game.SquareView = Backbone.View.extend({
     } else {
       $(this.el).removeClass('highlight');
     }
+    this.$('.edit').select();
   },
   checkAnswer: function(){
     // checking updated letter & position
